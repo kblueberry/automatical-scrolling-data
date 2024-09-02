@@ -1,11 +1,16 @@
 import { useEffect, useRef } from "react";
 import { FixedSizeList } from "react-window";
-import { useFetch } from "../../hooks/useFetch";
+import { LogsState } from "../../hooks/useFetch";
 import { useScrollToggle } from "../../hooks/useScrollToggle";
 import "./List.css";
 
-export default function List() {
-  const { logsState } = useFetch();
+export default function List({
+  logsState,
+  listSize,
+}: {
+  logsState: LogsState;
+  listSize: number;
+}) {
   const { isAutomaticScroll, toggleScroll, action } = useScrollToggle();
   const listRef = useRef<FixedSizeList>(null);
 
@@ -29,12 +34,12 @@ export default function List() {
     );
   };
 
-  return logsState.isConnected ? (
+  return (
     <>
       <FixedSizeList
         ref={listRef}
         height={820}
-        itemCount={logsState.logs.length}
+        itemCount={listSize}
         itemSize={40}
         width="100%"
       >
@@ -48,7 +53,5 @@ export default function List() {
         {action}
       </button>
     </>
-  ) : (
-    <p>Unable to connect to Web Socket</p>
   );
 }

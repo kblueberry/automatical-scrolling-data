@@ -6,7 +6,7 @@ export type Log = {
   message: string;
 };
 
-type LogsState = {
+export type LogsState = {
   isConnected: boolean;
   logs: Array<Log>;
   error?: Event | null;
