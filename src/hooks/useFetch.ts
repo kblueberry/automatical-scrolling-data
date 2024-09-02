@@ -28,7 +28,6 @@ export function useFetch() {
       );
 
       ws.onopen = () => {
-        console.log("WebSocket connection established");
         ws.send("message");
         setLogsState((prev: LogsState) => {
           return { ...prev, isConnected: true };
@@ -46,15 +45,12 @@ export function useFetch() {
       };
 
       ws.onclose = () => {
-        console.log("WebSocket connection closed");
         setLogsState((prev: LogsState) => {
           return { ...prev, isConnected: false };
         });
       };
 
       ws.onerror = (error: Event) => {
-        console.error("WebSocket throws error", error);
-
         setLogsState((prev: LogsState) => {
           return { ...prev, error };
         });
