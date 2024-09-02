@@ -1,7 +1,10 @@
 .list {
-  list-style: none;
   height: 85vh;
   overflow-y: auto;
+}
+
+.list ul {
+  list-style: none;
   padding: 0;
 }
 

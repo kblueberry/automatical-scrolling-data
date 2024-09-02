@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 export function useScrollToggle() {
-  const [isAutomaticScroll, setIsAutomaticScroll] = useState<boolean>(false);
-  const [action, setAction] = useState<string>("Scroll automatically");
+  const [isAutomaticScroll, setIsAutomaticScroll] = useState<boolean>(true);
+  const [action, setAction] = useState<string>("Scroll manually");
 
   const toggleScroll = (): void => {
     setIsAutomaticScroll(!isAutomaticScroll);
     setAction(() =>
-      isAutomaticScroll ? "Scroll automatically" : "Scroll manually"
+      isAutomaticScroll ? "Scroll manually" : "Scroll automatically"
     );
   };
 
