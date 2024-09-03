@@ -51,6 +51,7 @@ export function useFetch() {
       };
 
       ws.onerror = (error: Event) => {
+        console.error(`Error on WebSocket connection: ${error}`);
         setLogsState((prev: LogsState) => {
           return { ...prev, error };
         });
